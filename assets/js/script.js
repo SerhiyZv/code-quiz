@@ -1,3 +1,10 @@
+//Variebles diclarations
+var clickStart = document.getElementById("start-button");
+var timerEl = document.getElementById("countdown");
+var timeLeft = 60;
+var quizDuration;
+var questionContainer = document.querySelector("#quiz-container");
+//Questions and answers array
 var questions = [{
     q: "Commonly used data types DO NOT include:",
     a: "1. Strings",
@@ -39,12 +46,8 @@ var questions = [{
     correct: "1. <script src='code.js'>",    
 }];
 
-var clickStart = document.getElementById("start-button");
-var timerEl = document.getElementById("countdown");
-var timeLeft = 60;
-var quizDuration;
-var questionContainer = document.querySelector("#quiz-container");
 
+// Add timer Function
 function timer() {
     timerEl.textContent = "Time remaining: " + timeLeft + "s";
     quizDuration = setInterval(function () {
@@ -102,7 +105,8 @@ var answerClick = function(event) {
     event.preventDefault();
     var userAnswer = event.target.textContent;
     correctAnswer = questions[currentQuestionIndex].correct;
-    // determine if answer is wrong or right
+
+    // Determination of correct and wrong answers
     var answerDetermination = document.querySelector("#answer-determination");
     if (userAnswer !== correctAnswer) {
         adjustTime(-10);
@@ -123,12 +127,14 @@ var answerClick = function(event) {
     }
 };
 
+// Render questions
 var quiz = function (event) {
     event.preventDefault();
     resetDisplay();
     renderQuestion(questions[currentQuestionIndex]);
 };
 
+// Reset Display fuction and get the score
 function resetDisplay() {
     questionContainer.innerHTML="";
     document.querySelector("#welcome").style.display = "none";
@@ -146,6 +152,7 @@ clickViewScores.addEventListener("click", () => {
 
 })
 
+// Final page determination
 var initials; 
 function endQuizPage() {
     resetDisplay();
@@ -167,7 +174,8 @@ function endQuizPage() {
     blank.appendChild(submitInitialBtn);
 
     submitInitialBtn.addEventListener("click", () => {
-        // rest variable
+        
+        // store variables
         
         if (initialBox.value.length === 0) return false;
 
@@ -175,8 +183,10 @@ function endQuizPage() {
             let data = JSON.stringify({ "name":input[0], "score":input[1]})
             localStorage.setItem("object", data)
         }
+
         storeInitials(initialBox.value, userScore);
 
+        //Play again determination
         var playAgain = document.createElement("button");
         playAgain.textContent= "Play Again!";
         blank.appendChild(playAgain);
@@ -191,6 +201,8 @@ function endQuizPage() {
     initialBox.addEventListener("submit", endQuizPage);
     
 };
+
+
 function renderInitials() {
     submitInitialBtn.addEventListener('click', function(event) {
         event.preventDefault;
