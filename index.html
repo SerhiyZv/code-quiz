@@ -9,22 +9,27 @@
     <title>Code Quiz</title>
 </head>
 <body>
+
+    <!--View High Score button-->
     <div>
-        <button class="score" id="view-score">View High Score</button>
+        <button class="view-score" id="view-score">View High Score</button>
     </div>
-    <div id="page-start">
+
+    <!-- Initial Welcome Message -->
+    <section id="welcome">
         <h1>Welcome to the Code Challenge</h1>
         <p>Try to answer the following code-related questions within the time limit.
             Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-        <button class= "btn btn-primary">Start Quiz</button>
-    </div>
+        <button id="start-button">Start Quiz</button>
+    </section>
+
+    <!-- Timer display -->
     <h2 id="countdown"></h2>
-    <div class="quiz-container" id="quiz-conteiner"></div>
-    <div id="answers"></div>
+
+    <section class="quiz-container" id="quiz-container"></section>
+    <div id="answer-determination"></div>
     <script src="./assets/js/script.js"></script>
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 </html>
