@@ -1,3 +1,4 @@
+
 //Variables declaration
 var clickStart = document.getElementById("start-button");
 var timerEl = document.getElementById("countdown");
@@ -67,6 +68,7 @@ function adjustTime(amount) {
 }
 
 clickStart.onclick = timer;
+//Render Questions and create elements for questions and answers
 var renderQuestion = function (question) {
     questionContainer.innerHTML = "";
 
@@ -187,6 +189,7 @@ function endQuizPage() {
         storeInitials(initialBox.value, userScore);
   
         //Play again determination
+        
         var playAgain = document.createElement("button");
         playAgain.textContent= "Play Again!";
         blank.appendChild(playAgain);
@@ -194,11 +197,14 @@ function endQuizPage() {
         playAgain.addEventListener("click", () => {
             location.reload();
         })
+
+        if (playAgain.textContent = "Play Again!") 
+          submitInitialBtn.style.display = 'none';
     });
 
     document.querySelector("input").value = "";
 
-    initialBox.addEventListener("submit", endQuizPage);
+    // initialBox.addEventListener("submit", endQuizPage);
     
 };
 
