@@ -1,4 +1,4 @@
-//Variebles diclarations
+//Variables declaration
 var clickStart = document.getElementById("start-button");
 var timerEl = document.getElementById("countdown");
 var timeLeft = 60;
@@ -134,7 +134,7 @@ var quiz = function (event) {
     renderQuestion(questions[currentQuestionIndex]);
 };
 
-// Reset Display fuction and get the score
+// Reset Display function and get the score
 function resetDisplay() {
     questionContainer.innerHTML="";
     document.querySelector("#welcome").style.display = "none";
@@ -185,7 +185,7 @@ function endQuizPage() {
         }
 
         storeInitials(initialBox.value, userScore);
-
+  
         //Play again determination
         var playAgain = document.createElement("button");
         playAgain.textContent= "Play Again!";
@@ -201,7 +201,6 @@ function endQuizPage() {
     initialBox.addEventListener("submit", endQuizPage);
     
 };
-
 
 function renderInitials() {
     submitInitialBtn.addEventListener('click', function(event) {
