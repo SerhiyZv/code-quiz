@@ -142,12 +142,24 @@ function resetDisplay() {
     document.querySelector("#welcome").style.display = "none";
 }
 function highScores() {
-    let data = localStorage.getItem("object");
+    let data = localStorage.getItem("scoreData");
     let getData = JSON.parse(data);
-    let name = getData.name;
-    let score = getData.score;
-    questionContainer.innerHTML = "";
-    questionContainer.innerHTML = name + ": " + score;
+    
+    //Create ul element
+    const ul = document.createElement('ul');
+   
+    //Create a loop  and add data to the list element
+    for (let index = 0; index <getData.length; index++) {
+        let name = getData[index].name;
+        let score = getData[index].score;
+        //Create il element
+        const li = document.createElement('li');
+        li.innerHTML=name + ": " + score;
+        ul.appendChild(li);
+    }
+    //append ul element inside of questionContainer
+    questionContainer.appendChild(ul);
+  
 }
 clickViewScores.addEventListener("click", () => {
     highScores();
@@ -187,6 +199,13 @@ function endQuizPage() {
         }
 
         storeInitials(initialBox.value, userScore);
+
+        // get the data history
+        const scoreHistory = getScoreHistory(); // [... ]
+         // add the new user with score
+         scoreHistory.push({name: initialBox.value, score: userScore});
+         // set the data back to local storage
+        setScoreHistory(scoreHistory);
   
         //Play again determination
         
@@ -207,6 +226,13 @@ function endQuizPage() {
     // initialBox.addEventListener("submit", endQuizPage);
     
 };
+
+function getScoreHistory() {
+    return JSON.parse(localStorage.getItem("scoreData")) || [ ]; // [ .....]
+}
+function setScoreHistory(arr) {
+    localStorage.setItem("scoreData",JSON.stringify(arr));
+}
 
 function renderInitials() {
     submitInitialBtn.addEventListener('click', function(event) {
